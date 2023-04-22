@@ -1,5 +1,5 @@
-# DocuShare
-DocuShare is an all-in-one document management website! This platform offers a seamless solution for all document needs, including editing, sharing, and storing capabilities with an inbuilt grammar checker.
+# DocuShare-frontend
+DocuShare is an all-in-one document management website! This platform offers a seamless solution for all document needs, including editing, sharing, and storing capabilities with an inbuilt grammar checker. This repository contains the frontend code for the project.
 
 # Setup
 * Enter $npm install command in both frontend/ and backend/ directories
