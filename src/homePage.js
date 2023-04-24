@@ -27,7 +27,7 @@ export default function HomePage({onLogout}) {
         const regex = new RegExp(searchQuery, 'i');
         return regex.test(file.name);
       });
-
+    console.log(filteredFiles)
     const handleSearch = (event) => {
         setSearchQuery(event.target.value);
     }
