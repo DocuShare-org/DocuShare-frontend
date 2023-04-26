@@ -23,6 +23,7 @@ export default function LoginPage({onLogin}) {
           "Access-Control-Allow-Credentials": true,
         }
       }
+      console.log("Updated!");
       axios.post('http://20.127.252.24:3002/login', data, axiosConfig)
       .then(response => {
         console.log(response.data.token);
