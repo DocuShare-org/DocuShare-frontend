@@ -23,7 +23,7 @@ export default function LoginPage({onLogin}) {
           "Access-Control-Allow-Credentials": true,
         }
       }
-      axios.post('http://localhost:3002/login', data, axiosConfig)
+      axios.post('http://20.127.252.24:3002/login', data, axiosConfig)
       .then(response => {
         console.log(response.data.token);
         onLogin(response.data.token);
