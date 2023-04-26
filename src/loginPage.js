@@ -16,7 +16,14 @@ export default function LoginPage({onLogin}) {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = { email, password };
-      axios.post('http://localhost:3002/login', data)
+      let axiosConfig = {
+          headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": true,
+          "Access-Control-Allow-Credentials": true,
+        }
+      }
+      axios.post('http://localhost:3002/login', data, axiosConfig)
       .then(response => {
         console.log(response.data.token);
         onLogin(response.data.token);
