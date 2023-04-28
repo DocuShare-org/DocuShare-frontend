@@ -47,7 +47,7 @@ export default function LoginPage({onLogin}) {
             <div className="txt_field">
               <input type="text" onChange={(e) => setEmail(e.target.value)} required/>
               <span></span>
-              <label>Email</label>
+              <label>Gmail</label>
             </div>
             <div className="txt_field">
               <input type="password" onChange={(e) => setPassword(e.target.value)} required/>
@@ -57,7 +57,7 @@ export default function LoginPage({onLogin}) {
             {/* <div className="pass">Forgot Password?</div> */}
             <input type="submit" value="Login"/>
             <div className="signup_link">
-              Not a member? <a href="/register">Signup</a>
+              Not a Member? <a href="/register">Signup</a>
             </div>
           </form>
         </div>
