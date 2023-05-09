@@ -5,7 +5,7 @@
     - name: Apply frontend deployment
       k8s:
         state: present
-        definition: /path/to/frontend-deployment.yaml
+        definition: ./deploy-frontend.yaml
         namespace: default
         image: dhamodhar7/docushare-frontend:latest
       register: frontend_deployment
