@@ -1,0 +1,20 @@
+- name: Deploy Kubernetes services
+  hosts: kubernetes
+  become: true
+  tasks:
+    - name: Apply frontend deployment
+      k8s:
+        state: present
+        definition: ./deploy-frontend.yaml
+        namespace: default
+        image: dhamodhar7/docushare-frontend:latest
+      register: frontend_deployment
+
+    - name: Restart frontend pods if deployment changed
+      k8s_info:
+        kind: Deployment
+        namespace: default
+        name: frontend
+      register: frontend_info
+      changed_when: frontend_info.latest_version != frontend_deployment.resource_version
+      ignore_errors: yes

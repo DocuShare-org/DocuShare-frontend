@@ -16,7 +16,15 @@ export default function LoginPage({onLogin}) {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = { email, password };
-      axios.post('http://localhost:3002/login', data)
+      let axiosConfig = {
+          headers: {
+          'Content-Type': 'application/json;charset=UTF-8',
+          "Access-Control-Allow-Origin": true,
+          "Access-Control-Allow-Credentials": true,
+        }
+      }
+      console.log("Updated!");
+      axios.post('http://localhost:3002/login', data, axiosConfig)
       .then(response => {
         console.log(response.data.token);
         onLogin(response.data.token);
@@ -39,7 +47,7 @@ export default function LoginPage({onLogin}) {
             <div className="txt_field">
               <input type="text" onChange={(e) => setEmail(e.target.value)} required/>
               <span></span>
-              <label>Email</label>
+              <label>Gmail</label>
             </div>
             <div className="txt_field">
               <input type="password" onChange={(e) => setPassword(e.target.value)} required/>
@@ -49,7 +57,7 @@ export default function LoginPage({onLogin}) {
             {/* <div className="pass">Forgot Password?</div> */}
             <input type="submit" value="Login"/>
             <div className="signup_link">
-              Not a member? <a href="/register">Signup</a>
+              Not a Member? <a href="/register">Signup</a>
             </div>
           </form>
         </div>
