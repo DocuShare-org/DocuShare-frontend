@@ -35,6 +35,8 @@ export default function TextEditor() {
     const [searchParams, setSearchParams] = useSearchParams()
     const [errorText,setErrorText] = useState("");
 
+    const [store, setstore] = useState("");
+
     const nav = useNavigate();
 
     useEffect(() => {
@@ -67,7 +69,7 @@ export default function TextEditor() {
 
     useEffect(() => {
         if(socket == null || quill == null) return 
-        socket.once('load-document', document => {
+        socket.on('load-document', document => {
             quill.setContents(document)
             quill.enable()
         })
@@ -121,7 +123,11 @@ export default function TextEditor() {
         const qll = new Quill(editor, {theme:"snow", modules : {toolbar : TOOLBAR_OPTIONS}})
         qll.disable()
         qll.setText("Loading...")
+        
+
         setQuill(qll);
+        const s = qll.getText();
+        console.log("qll : ",s)
     },[])
 
     const togglePopup = async()=>{
@@ -176,15 +182,29 @@ export default function TextEditor() {
             width: 190, //target width in the PDF document
             windowWidth: 675 //window width in CSS pixels
         });
+        
+    }
+
+    const check_gramm =() =>{
+
+        const stat = 0;
+        socket.emit("check-grammar", stat);
+        
+        
+
+
     }
     
 
     return (
         <div> 
             <h1 className="home-logo" onClick={()=>nav('/home')}>DocuShare</h1>
-            <div id = "main-editor" className="main-editor" ref={wrapperRef}>
+            <div id = "main-editor" className="main-editor" ref={wrapperRef} value='asd '>
             </div>
+            
             <div className='bottom-nav'>
+                <button onClick={check_gramm} className="share-doc-btn">CheckVal</button>
+                
                 <button onClick={downloadPDF} className="share-doc-btn">Dowload document as PDF</button>
                 <button onClick={togglePopup} className="share-doc-btn">Share Document</button> 
             </div>
