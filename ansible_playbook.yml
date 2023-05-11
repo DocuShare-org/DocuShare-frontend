@@ -5,9 +5,9 @@
   tasks:
     - name: create frontend deployment
       kubernetes.core.k8s:
-        definition: "{{ lookup('file', './deploy-backend.yaml') | from_yaml }}"
+        definition: "{{ lookup('file', './deploy-frontend.yaml') | from_yaml }}"
         state: present
     - name: create frontend service
       kubernetes.core.k8s:
-        definition: "{{ lookup('file', './service-backend.yaml') | from_yaml }}" 
+        definition: "{{ lookup('file', './service-frontend.yaml') | from_yaml }}" 
         state: present
