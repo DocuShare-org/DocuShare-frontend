@@ -57,7 +57,7 @@ export default function HomePage({onLogout}) {
 
     useEffect(()=>{
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('authToken');
-        axios.get('http://localhost:3002/get_docs')
+        axios.get('/get_docs')
         .then(response => {
             var ls = []
             for(let i = 0;i<response.data.length;i++)

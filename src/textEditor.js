@@ -42,7 +42,7 @@ export default function TextEditor() {
     useEffect(() => {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('authToken');
         const data = { "did": searchParams.get("docId") };
-        axios.post('http://localhost:3002/check_access', data)
+        axios.post('/check_access', data)
         .then(response => {
             console.log(response);            
         })
@@ -77,7 +77,7 @@ export default function TextEditor() {
     },[socket,quill])
 
     useEffect(() => {
-        const skt = io("http://localhost:3001")
+        const skt = io("http://backend-service:3001")
         setSocket(skt);
         return () => {
             skt.disconnect();
@@ -140,7 +140,7 @@ export default function TextEditor() {
     const get_access_list = () => {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('authToken');
         const data = { "did": searchParams.get("docId") };
-        axios.post('http://localhost:3002/get_access_list', data)
+        axios.post('/get_access_list', data)
         .then(response => {
             if(response.status == 200) setAccessList(response.data);
         })
@@ -151,7 +151,7 @@ export default function TextEditor() {
     const add_access_request = () => {
         axios.defaults.headers.common['Authorization'] = localStorage.getItem('authToken');
         const data = { "did": searchParams.get("docId"), "access_email": email };
-        axios.post('http://localhost:3002/add_access', data)
+        axios.post('/add_access', data)
         .then(response => {
             console.log(response);
           if(response.data==='Done')

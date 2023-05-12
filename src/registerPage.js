@@ -19,7 +19,7 @@ export default function RegisterPage() {
     const handleSubmit = async (e) => {
       e.preventDefault();
       const data = { email, password, name };
-      axios.post('http://localhost:3002/register', data)
+      axios.post('/register', data)
       .then(response => {
         if(response.data.message === 'User registered successfully'){
           nav('/login');

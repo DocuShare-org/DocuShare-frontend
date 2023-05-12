@@ -24,7 +24,7 @@ export default function LoginPage({onLogin}) {
         }
       }
       console.log("Updated!");
-      axios.post('http://localhost:3002/login', data, axiosConfig)
+      axios.post('/login', data, axiosConfig)
       .then(response => {
         console.log(response.data.token);
         onLogin(response.data.token);
