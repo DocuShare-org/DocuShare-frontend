@@ -77,7 +77,7 @@ export default function TextEditor() {
     },[socket,quill])
 
     useEffect(() => {
-        const skt = io("http://backend-service:3001")
+        const skt = io("ws://backend-service:3001")
         setSocket(skt);
         return () => {
             skt.disconnect();
